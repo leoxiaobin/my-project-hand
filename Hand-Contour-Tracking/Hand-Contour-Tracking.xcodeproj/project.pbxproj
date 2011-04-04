@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34FAF9B21349B63700730A43 /* Bspline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF9AE1349B63700730A43 /* Bspline.cpp */; };
+		34FAF9B31349B63700730A43 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF9AF1349B63700730A43 /* Hand.cpp */; };
+		34FAF9B41349B63700730A43 /* particles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF9B01349B63700730A43 /* particles.cpp */; };
+		34FAF9B51349B63700730A43 /* TSLskinSeg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FAF9B11349B63700730A43 /* TSLskinSeg.cpp */; };
+		34FAF9C31349B75A00730A43 /* libopencv_calib3d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9B71349B75A00730A43 /* libopencv_calib3d.dylib */; };
+		34FAF9C41349B75A00730A43 /* libopencv_contrib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9B81349B75A00730A43 /* libopencv_contrib.dylib */; };
+		34FAF9C51349B75A00730A43 /* libopencv_core.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9B91349B75A00730A43 /* libopencv_core.dylib */; };
+		34FAF9C61349B75A00730A43 /* libopencv_features2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9BA1349B75A00730A43 /* libopencv_features2d.dylib */; };
+		34FAF9C71349B75A00730A43 /* libopencv_flann.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9BB1349B75A00730A43 /* libopencv_flann.dylib */; };
+		34FAF9C81349B75A00730A43 /* libopencv_gpu.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9BC1349B75A00730A43 /* libopencv_gpu.dylib */; };
+		34FAF9C91349B75A00730A43 /* libopencv_highgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9BD1349B75A00730A43 /* libopencv_highgui.dylib */; };
+		34FAF9CA1349B75A00730A43 /* libopencv_imgproc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9BE1349B75A00730A43 /* libopencv_imgproc.dylib */; };
+		34FAF9CB1349B75A00730A43 /* libopencv_legacy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9BF1349B75A00730A43 /* libopencv_legacy.dylib */; };
+		34FAF9CC1349B75A00730A43 /* libopencv_ml.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9C01349B75A00730A43 /* libopencv_ml.dylib */; };
+		34FAF9CD1349B75A00730A43 /* libopencv_objdetect.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9C11349B75A00730A43 /* libopencv_objdetect.dylib */; };
+		34FAF9CE1349B75A00730A43 /* libopencv_video.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FAF9C21349B75A00730A43 /* libopencv_video.dylib */; };
+		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
+		8DD76F6A0486A84900D96B5E /* Hand-Contour-Tracking.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Hand-Contour-Tracking.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F6A0486A84900D96B5E /* Hand-Contour-Tracking.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		34FAF9A91349B61D00730A43 /* Bspline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bspline.h; sourceTree = "<group>"; };
+		34FAF9AA1349B61D00730A43 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
+		34FAF9AB1349B61D00730A43 /* opencv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opencv.h; sourceTree = "<group>"; };
+		34FAF9AC1349B61D00730A43 /* particles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = particles.h; sourceTree = "<group>"; };
+		34FAF9AD1349B61D00730A43 /* TSLskinSeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLskinSeg.h; sourceTree = "<group>"; };
+		34FAF9AE1349B63700730A43 /* Bspline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bspline.cpp; sourceTree = "<group>"; };
+		34FAF9AF1349B63700730A43 /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
+		34FAF9B01349B63700730A43 /* particles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = particles.cpp; sourceTree = "<group>"; };
+		34FAF9B11349B63700730A43 /* TSLskinSeg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TSLskinSeg.cpp; sourceTree = "<group>"; };
+		34FAF9B71349B75A00730A43 /* libopencv_calib3d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.dylib; path = usr/lib/libopencv_calib3d.dylib; sourceTree = SDKROOT; };
+		34FAF9B81349B75A00730A43 /* libopencv_contrib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_contrib.dylib; path = usr/lib/libopencv_contrib.dylib; sourceTree = SDKROOT; };
+		34FAF9B91349B75A00730A43 /* libopencv_core.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.dylib; path = usr/lib/libopencv_core.dylib; sourceTree = SDKROOT; };
+		34FAF9BA1349B75A00730A43 /* libopencv_features2d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_features2d.dylib; path = usr/lib/libopencv_features2d.dylib; sourceTree = SDKROOT; };
+		34FAF9BB1349B75A00730A43 /* libopencv_flann.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_flann.dylib; path = usr/lib/libopencv_flann.dylib; sourceTree = SDKROOT; };
+		34FAF9BC1349B75A00730A43 /* libopencv_gpu.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_gpu.dylib; path = usr/lib/libopencv_gpu.dylib; sourceTree = SDKROOT; };
+		34FAF9BD1349B75A00730A43 /* libopencv_highgui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.dylib; path = usr/lib/libopencv_highgui.dylib; sourceTree = SDKROOT; };
+		34FAF9BE1349B75A00730A43 /* libopencv_imgproc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.dylib; path = usr/lib/libopencv_imgproc.dylib; sourceTree = SDKROOT; };
+		34FAF9BF1349B75A00730A43 /* libopencv_legacy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_legacy.dylib; path = usr/lib/libopencv_legacy.dylib; sourceTree = SDKROOT; };
+		34FAF9C01349B75A00730A43 /* libopencv_ml.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_ml.dylib; path = usr/lib/libopencv_ml.dylib; sourceTree = SDKROOT; };
+		34FAF9C11349B75A00730A43 /* libopencv_objdetect.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_objdetect.dylib; path = usr/lib/libopencv_objdetect.dylib; sourceTree = SDKROOT; };
+		34FAF9C21349B75A00730A43 /* libopencv_video.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_video.dylib; path = usr/lib/libopencv_video.dylib; sourceTree = SDKROOT; };
+		34FAFA241349BAED00730A43 /* config4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config4.txt; sourceTree = "<group>"; };
+		34FAFA251349BAED00730A43 /* controlPoint2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controlPoint2.txt; sourceTree = "<group>"; };
+		34FAFA261349BAED00730A43 /* knotsCount2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knotsCount2.txt; sourceTree = "<group>"; };
+		34FAFA271349BAED00730A43 /* measuremenline.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = measuremenline.txt; sourceTree = "<group>"; };
+		8DD76F6C0486A84900D96B5E /* Hand-Contour-Tracking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Hand-Contour-Tracking"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859E8B029090EE04C91782 /* Hand-Contour-Tracking.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "Hand-Contour-Tracking.1"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34FAF9C31349B75A00730A43 /* libopencv_calib3d.dylib in Frameworks */,
+				34FAF9C41349B75A00730A43 /* libopencv_contrib.dylib in Frameworks */,
+				34FAF9C51349B75A00730A43 /* libopencv_core.dylib in Frameworks */,
+				34FAF9C61349B75A00730A43 /* libopencv_features2d.dylib in Frameworks */,
+				34FAF9C71349B75A00730A43 /* libopencv_flann.dylib in Frameworks */,
+				34FAF9C81349B75A00730A43 /* libopencv_gpu.dylib in Frameworks */,
+				34FAF9C91349B75A00730A43 /* libopencv_highgui.dylib in Frameworks */,
+				34FAF9CA1349B75A00730A43 /* libopencv_imgproc.dylib in Frameworks */,
+				34FAF9CB1349B75A00730A43 /* libopencv_legacy.dylib in Frameworks */,
+				34FAF9CC1349B75A00730A43 /* libopencv_ml.dylib in Frameworks */,
+				34FAF9CD1349B75A00730A43 /* libopencv_objdetect.dylib in Frameworks */,
+				34FAF9CE1349B75A00730A43 /* libopencv_video.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* Hand-Contour-Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				34FAFA231349BAC600730A43 /* Config */,
+				34FAF9A81349B5F200730A43 /* Include */,
+				34FAF9A71349B5E700730A43 /* Libs */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = "Hand-Contour-Tracking";
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				34FAF9AE1349B63700730A43 /* Bspline.cpp */,
+				34FAF9AF1349B63700730A43 /* Hand.cpp */,
+				34FAF9B01349B63700730A43 /* particles.cpp */,
+				34FAF9B11349B63700730A43 /* TSLskinSeg.cpp */,
+				08FB7796FE84155DC02AAC07 /* main.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* Hand-Contour-Tracking */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34FAF9A71349B5E700730A43 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				34FAF9B71349B75A00730A43 /* libopencv_calib3d.dylib */,
+				34FAF9B81349B75A00730A43 /* libopencv_contrib.dylib */,
+				34FAF9B91349B75A00730A43 /* libopencv_core.dylib */,
+				34FAF9BA1349B75A00730A43 /* libopencv_features2d.dylib */,
+				34FAF9BB1349B75A00730A43 /* libopencv_flann.dylib */,
+				34FAF9BC1349B75A00730A43 /* libopencv_gpu.dylib */,
+				34FAF9BD1349B75A00730A43 /* libopencv_highgui.dylib */,
+				34FAF9BE1349B75A00730A43 /* libopencv_imgproc.dylib */,
+				34FAF9BF1349B75A00730A43 /* libopencv_legacy.dylib */,
+				34FAF9C01349B75A00730A43 /* libopencv_ml.dylib */,
+				34FAF9C11349B75A00730A43 /* libopencv_objdetect.dylib */,
+				34FAF9C21349B75A00730A43 /* libopencv_video.dylib */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		34FAF9A81349B5F200730A43 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				34FAF9A91349B61D00730A43 /* Bspline.h */,
+				34FAF9AA1349B61D00730A43 /* Hand.h */,
+				34FAF9AB1349B61D00730A43 /* opencv.h */,
+				34FAF9AC1349B61D00730A43 /* particles.h */,
+				34FAF9AD1349B61D00730A43 /* TSLskinSeg.h */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+		34FAFA231349BAC600730A43 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				34FAFA241349BAED00730A43 /* config4.txt */,
+				34FAFA251349BAED00730A43 /* controlPoint2.txt */,
+				34FAFA261349BAED00730A43 /* knotsCount2.txt */,
+				34FAFA271349BAED00730A43 /* measuremenline.txt */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* Hand-Contour-Tracking.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* Hand-Contour-Tracking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Hand-Contour-Tracking" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hand-Contour-Tracking";
+			productInstallPath = "$(HOME)/bin";
+			productName = "Hand-Contour-Tracking";
+			productReference = 8DD76F6C0486A84900D96B5E /* Hand-Contour-Tracking */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Hand-Contour-Tracking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* Hand-Contour-Tracking */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* Hand-Contour-Tracking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
+				34FAF9B21349B63700730A43 /* Bspline.cpp in Sources */,
+				34FAF9B31349B63700730A43 /* Hand.cpp in Sources */,
+				34FAF9B41349B63700730A43 /* particles.cpp in Sources */,
+				34FAF9B51349B63700730A43 /* TSLskinSeg.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "Hand-Contour-Tracking";
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "Hand-Contour-Tracking";
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ENABLE_OPENMP_SUPPORT = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Hand-Contour-Tracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Hand-Contour-Tracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
