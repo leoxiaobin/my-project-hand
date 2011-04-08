@@ -548,6 +548,14 @@ void Hand::calMeasureSlope(vector< vector <float> > &Measureslope)
 				{
 					_MeasureSlope.push_back(dy/dx);
 				} 
+				else if ( j == num_MeasurePoints/2+1)
+				{
+					_MeasureSlope.push_back((dy/dx+1)/(1-dy/dx));
+				} 
+				else if ( j == num_MeasurePoints/2-2)
+				{
+					_MeasureSlope.push_back((dy/dx-1)/(1+dy/dx));
+				} 
 				else
 				{
 					_MeasureSlope.push_back(-1*dx/dy);
@@ -674,8 +682,29 @@ void Hand::calAllMeasureLinePoints()
 			break;
 		case 1:
 		case 2:
-		case 3:
-		case 4:		
+		case 3:		
+			for (j = 0; j<num_measure_points_per_spline/2+2; j++)
+			{
+				Mat line_points(22,1,CV_32FC2);
+				int x = *MeasurePoints[i].ptr<float>(j);
+				int y = *(MeasurePoints[i].ptr<float>(j)+1);
+				float k = Measureslope[i][j];
+				calLinePoints(line_points, x, y, k, 0, 10, false,false);
+				calLinePoints(line_points, x, y, k, 11, 21, true,true);
+				MeasurePointsPerSpline.push_back(line_points);	
+			}
+			for (; j<num_measure_points_per_spline; j++)
+			{
+				Mat line_points(22,1,CV_32FC2);
+				int x = *MeasurePoints[i].ptr<float>(j);
+				int y = *(MeasurePoints[i].ptr<float>(j)+1);
+				float k = Measureslope[i][j];
+				calLinePoints(line_points, x, y, k, 0, 10, true,false);
+				calLinePoints(line_points, x, y, k, 11, 21, false,true);
+				MeasurePointsPerSpline.push_back(line_points);
+			}
+			break;
+		case 4:
 			for (j = 0; j<num_measure_points_per_spline/2+1; j++)
 			{
 				Mat line_points(22,1,CV_32FC2);
@@ -831,7 +860,7 @@ void Hand::affineFinger(FINGER finger, float scale, float angle)
 		*(ControlPoints[finger].ptr<float>(i)+1) += distance*v.y;	
 	}
 
-	for (; i<numMeasurePoints/2+1; i++)
+	for (; i<numMeasurePoints/2+2; i++)
 	{
 		*MeasurePoints[finger].ptr<float>(i) += distance*v.x;
 		*(MeasurePoints[finger].ptr<float>(i)+1) += distance*v.y;
@@ -840,11 +869,11 @@ void Hand::affineFinger(FINGER finger, float scale, float angle)
 
 	for (; i<numMeasurePoints; i++)
 	{
-		x = *ControlPoints[finger].ptr<float>(i-2) - *ControlPoints[finger].ptr<float>(numControlPoints-1);
-		y = *(ControlPoints[finger].ptr<float>(i-2)+1) - *(ControlPoints[finger].ptr<float>(numControlPoints-1)+1);
+		x = *ControlPoints[finger].ptr<float>(i-4) - *ControlPoints[finger].ptr<float>(numControlPoints-1);
+		y = *(ControlPoints[finger].ptr<float>(i-4)+1) - *(ControlPoints[finger].ptr<float>(numControlPoints-1)+1);
 		distance = (1-scale)*sqrt(x*x + y*y);
-		*ControlPoints[finger].ptr<float>(i-2) += distance*v.x;
-		*(ControlPoints[finger].ptr<float>(i-2)+1) += distance*v.y;
+		*ControlPoints[finger].ptr<float>(i-4) += distance*v.x;
+		*(ControlPoints[finger].ptr<float>(i-4)+1) += distance*v.y;
 
 		x = *MeasurePoints[finger].ptr<float>(i) - *ControlPoints[finger].ptr<float>(numControlPoints-1);
 		y = *(MeasurePoints[finger].ptr<float>(i)+1) - *(ControlPoints[finger].ptr<float>(numControlPoints-1)+1);
@@ -969,7 +998,7 @@ float Hand::calFingerAngleWeight(const cv::Mat& img, Hand::FINGER finger)
 	float w = 1;
 
 	int n = MeasureLinePoints[finger].size();
-	for (int j=0; j<n/2-1; j++)
+	for (int j=0; j<n/2-2; j++)
 	{
 		int k = 0;
 		for ( ; k<21; k++)
@@ -985,7 +1014,7 @@ float Hand::calFingerAngleWeight(const cv::Mat& img, Hand::FINGER finger)
 		w *= score[k];
 	}
 
-	for (int j=n/2+1; j<n; j++)
+	for (int j=n/2+2; j<n; j++)
 	{
 		int k = 0;
 		for ( ; k<21; k++)
@@ -1009,7 +1038,7 @@ float Hand::calFingerScaleWeight(const cv::Mat& img, Hand::FINGER finger)
 	float w = 1;
 
 	int n = MeasureLinePoints[finger].size();
-	for (int j=n/2-1; j<n/2+1; j++)
+	for (int j=n/2-2; j<n/2+2; j++)
 	{
 		int k = 0;
 		for ( ; k<21; k++)
