@@ -18,6 +18,12 @@ const int NUM_PARTICLES = 500;
 int main()
 {
 	Hand originalHand(confile, cntpntfile, mlinefile);
+
+	cv::Mat testImg = cv::imread("ii.jpg");
+	originalHand.showHand(testImg, cv::Scalar(23,21,222),2);
+	originalHand.showMeasureLinePoints(testImg, cv::Scalar(211,2,2),2);
+	//imshow("test", testImg);
+
 	originalHand.affineHand(0, -50, 0.6, 0);
 
 	cv::VideoCapture capture(0);
@@ -61,7 +67,7 @@ int main()
 		medianBlur(imgBw,imgBw,7);
 	
 		originalHand.showHand(img,Scalar(255,255,0),3);
-		//hand.showMeasureLinePoints(img, cv::Scalar(255,0,255),2);
+		//originalHand.showMeasureLinePoints(img, cv::Scalar(255,0,255),2);
 		cv::flip(img,img,1);
 		imshow("result",img);
 	
@@ -77,7 +83,7 @@ int main()
 	{
 		capture>>img;
 		TSLskinSegment(img, imgBw);
-		medianBlur(imgBw, imgBw, 11);
+		//medianBlur(imgBw, imgBw, 3);
 		imshow("bw", imgBw);
 
 		if (!keep)
@@ -164,7 +170,9 @@ int main()
 		//showHand.affineFinger(Hand::THUMB1, 1, 20);
 		//showHand.affineThumb1(90);
 		showHand.showHand(img, cv::Scalar(0.255,111),2);
+		//showHand.showMeasureLinePoints(img, cv::Scalar(255,0,0),2);
 		//showHand.showControlPoints(img,cv::Scalar(255,0,0),6);
+		//showHand.showMeasurePoints(img, cv::Scalar(0,255,0),3);
 
 
 		cv::flip(img,img,1);
