@@ -6,5 +6,6 @@ void sweepFinger(Hand &hand, Hand::FINGER finger,float initialAngle, const cv::M
 void refineFinger(Hand &hand, Hand::FINGER finger, const cv::Mat& bw);
 void sweepThumb1(Hand &hand, const cv::Mat& bw);
 void sweepThumb2(Hand &hand, const cv::Mat& bw);
+void setMask(Hand &hand, cv::Mat& mask);
 
 #endif

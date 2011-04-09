@@ -63,17 +63,15 @@ public:
 	vector<cv::Mat> MeasurePoints;
 	vector<cv::Mat> ControlPoints;
 	vector< vector<cv::Mat> > MeasureLinePoints;
-	;
+	
 private:
 	//Hand
 	float handArea;
 	cv::Point2f Gravity;
-	//cv::Point2f PreGravity;
 	cv::Mat PivotPoints;
 	cv::Mat TipPoints;
 
 	//Bspline
-	
 	const static int nbsplines = 10;
 	const static int order = 3;
 	const static float interval;

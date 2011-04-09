@@ -33,6 +33,9 @@
     <ClCompile Include="Function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CbCrSelfAdaptSkinDetect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bspline.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CbCrSelfAdaptSkinDetect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

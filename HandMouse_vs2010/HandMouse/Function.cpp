@@ -32,7 +32,7 @@ void refineFinger(Hand &hand, Hand::FINGER finger, const cv::Mat& bw)
 	float preScale(1);
 	float weight(0);
 
-	for (float i = 0.1; i<1.1; i +=0.1)
+	for (float i = 0.1; i<1.3; i +=0.1)
 	{
 		hand.affineFinger(finger, 1/preScale*i, 0);
 		preScale = i;
@@ -94,4 +94,25 @@ void sweepThumb2(Hand &hand, const cv::Mat& bw)
 		}
 	}
 	hand.affineThumb2(angleWeight.angle-45);
+}
+
+void setMask(Hand &hand, cv::Mat& mask)
+{
+	vector< vector<Point> > contours;
+	vector<cv::Point> controlPoints;
+
+	for (int i = 0; i < hand.GetNumBspine(); ++i)
+	{
+		int numControlPoints = hand.ControlPoints[i].rows;
+		for ( int j = 0; j < numControlPoints; ++j)
+		{
+			cv::Point tmpPoint;
+			tmpPoint.x = *hand.ControlPoints[i].ptr<float>(j);
+			tmpPoint.y = *(hand.ControlPoints[i].ptr<float>(j)+1);
+			controlPoints.push_back(tmpPoint);
+		}
+	}
+	contours.push_back(controlPoints);
+
+	cv::drawContours(mask, contours, -1, cv::Scalar(255,255,255), CV_FILLED);
 }
