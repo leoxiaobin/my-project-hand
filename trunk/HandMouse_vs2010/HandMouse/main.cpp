@@ -4,6 +4,7 @@
 #include "TSLskinSeg.h"
 #include "particles.h"
 #include "Function.h"
+#include "CbCrSelfAdaptSkinDetect.h"
 #include <ctime>
 
 string confile = "config4.txt";
@@ -12,7 +13,7 @@ string mlinefile = "measuremenline.txt";
 
 string xlm = "test.xml";
 
-const int NUM_PARTICLES = 500;
+const int NUM_PARTICLES = 1000;
 
 
 int main()
@@ -22,7 +23,6 @@ int main()
 	cv::Mat testImg = cv::imread("ii.jpg");
 	originalHand.showHand(testImg, cv::Scalar(23,21,222),2);
 	originalHand.showMeasureLinePoints(testImg, cv::Scalar(211,2,2),2);
-	//imshow("test", testImg);
 
 	originalHand.affineHand(0, -50, 0.6, 0);
 
@@ -39,8 +39,14 @@ int main()
 
 	int imgWidth = img.cols;
 	int imgHeight = img.rows;
-	cv::Mat BW = Mat::zeros(2*imgWidth, 2*imgHeight, CV_8UC1);
+	cv::Mat BW = Mat::zeros(2*imgHeight, 2*imgWidth, CV_8UC1);
 	cv::Mat imgBw(BW, cv::Rect(0.5*imgWidth, 0.5*imgHeight, imgWidth, imgHeight));
+	cv::Mat mask = Mat::zeros(imgHeight, imgWidth, CV_8UC1);
+
+	setMask(originalHand, mask);
+	cv::flip(mask, mask, 1);
+
+	imshow("mask", mask);
 
 	particle preParticles;
 	particle *particles, *newParticles;
@@ -60,6 +66,12 @@ int main()
 
 	bool keep = false;
 
+
+	CbCrSelfAdaptSkinDetect skinDetector;
+	int countFit = 0;
+	double t;
+
+
 	while (1)
 	{
 		capture>>img;
@@ -75,15 +87,29 @@ int main()
 		{
 			break;
 		}
-		if(originalHand.calWeight(imgBw)>1) break;
+		if(originalHand.calWeight(imgBw)>20) 
+		{
+			Mat _img, _mask;
+			cv::resize(img, _img, cv::Size(160, 120));
+			cv::resize(mask, _mask, cv::Size(160, 120));
+			t= (double)getTickCount();
+			skinDetector.getBestParamentMask(_img, _mask);
+			t = (double)getTickCount() - t;
+			printf("detection time = %gms\n", t*1000./cv::getTickFrequency());
+			countFit++;
+		}
+
+		if(countFit == 20) break;
 	}
 
 
 	while(1)
 	{
 		capture>>img;
-		TSLskinSegment(img, imgBw);
-		//medianBlur(imgBw, imgBw, 3);
+		t = (double)getTickCount();
+		//TSLskinSegment(img, imgBw);
+		skinDetector.skinDetectForUser(img, imgBw);
+		medianBlur(imgBw, imgBw, 5);
 		imshow("bw", imgBw);
 
 		if (!keep)
@@ -169,10 +195,13 @@ int main()
 
 		//showHand.affineFinger(Hand::THUMB1, 1, 20);
 		//showHand.affineThumb1(90);
-		showHand.showHand(img, cv::Scalar(0.255,111),2);
+		showHand.showHand(img, cv::Scalar(0.255,255),2);
 		//showHand.showMeasureLinePoints(img, cv::Scalar(255,0,0),2);
 		//showHand.showControlPoints(img,cv::Scalar(255,0,0),6);
 		//showHand.showMeasurePoints(img, cv::Scalar(0,255,0),3);
+
+		t = (double)getTickCount() - t;
+		printf("detection time = %gms\n", t*1000./cv::getTickFrequency());
 
 
 		cv::flip(img,img,1);
@@ -183,6 +212,5 @@ int main()
 			break;
 		}	
 	}
-
 	return 0;
 }
