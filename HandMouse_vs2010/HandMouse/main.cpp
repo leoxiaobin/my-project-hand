@@ -13,7 +13,7 @@ string mlinefile = "measuremenline.txt";
 
 string xlm = "test.xml";
 
-const int NUM_PARTICLES = 1000;
+const int NUM_PARTICLES = 2000;
 
 
 int main()
@@ -87,7 +87,7 @@ int main()
 		{
 			break;
 		}
-		if(originalHand.calWeight(imgBw)>20) 
+		if(originalHand.calWeight(imgBw)>100) 
 		{
 			Mat _img, _mask;
 			cv::resize(img, _img, cv::Size(160, 120));
@@ -99,7 +99,7 @@ int main()
 			countFit++;
 		}
 
-		if(countFit == 20) break;
+		if(countFit == 2) break;
 	}
 
 
@@ -131,7 +131,6 @@ int main()
 				trasitHand.affineHand(x, y, s, a);
 				particles[i].w = trasitHand.calWeight(imgBw);
 				//particles[i].w = trasitHand.calPalmWeight(imgBw);
-
 			}
 		}
 

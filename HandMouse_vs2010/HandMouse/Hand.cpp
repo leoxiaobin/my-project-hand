@@ -1,4 +1,5 @@
 #include "Hand.h"
+//#define FIND_SKIN 1
 
 const float Hand::interval = 0.04;
 //const int Hand::nknots[nbsplines] = {7,16,16,16,16,7,7,10,7,7};
@@ -942,10 +943,11 @@ float Hand::calWeight(const cv::Mat& img)
 		float _w = 1;
 		for (int j=0; j<n; j++)
 		{
+			int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 			int k = 0;
 			for ( ; k<21; k++)
 			{
-				int x0, y0, x1, y1;
 				x0 = *MeasureLinePoints[i][j].ptr<float>(k);
 				y0 = *(MeasureLinePoints[i][j].ptr<float>(k)+1);
 				x1 = *MeasureLinePoints[i][j].ptr<float>(k+1);
@@ -953,6 +955,18 @@ float Hand::calWeight(const cv::Mat& img)
 				if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 					break;
 			}
+#else
+			int k = 21;
+			for ( ; k>0; k--)
+			{
+				x0 = *MeasureLinePoints[i][j].ptr<float>(k);
+				y0 = *(MeasureLinePoints[i][j].ptr<float>(k)+1);
+				x1 = *MeasureLinePoints[i][j].ptr<float>(k-1);
+				y1 = *(MeasureLinePoints[i][j].ptr<float>(k-1)+1);
+				if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+					break;
+			}
+#endif
 			_w *= score[k];
 		}
 		w *=_w;
@@ -973,10 +987,11 @@ float Hand::calPalmWeight(const cv::Mat& img)
 			float _w = 1;
 			for (int j=0; j<n; j++)
 			{
+				int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 				int k = 0;
 				for ( ; k<21; k++)
 				{
-					int x0, y0, x1, y1;
 					x0 = *MeasureLinePoints[i][j].ptr<float>(k);
 					y0 = *(MeasureLinePoints[i][j].ptr<float>(k)+1);
 					x1 = *MeasureLinePoints[i][j].ptr<float>(k+1);
@@ -984,6 +999,18 @@ float Hand::calPalmWeight(const cv::Mat& img)
 					if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 						break;
 				}
+#else
+				int k = 21;
+				for ( ; k>=0; k--)
+				{
+					x0 = *MeasureLinePoints[i][j].ptr<float>(k);
+					y0 = *(MeasureLinePoints[i][j].ptr<float>(k)+1);
+					x1 = *MeasureLinePoints[i][j].ptr<float>(k-1);
+					y1 = *(MeasureLinePoints[i][j].ptr<float>(k-1)+1);
+					if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+						break;
+				}
+#endif
 				_w *= score[k];
 			}
 			w *=_w;
@@ -1000,10 +1027,11 @@ float Hand::calFingerAngleWeight(const cv::Mat& img, Hand::FINGER finger)
 	int n = MeasureLinePoints[finger].size();
 	for (int j=0; j<n/2-2; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[finger][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[finger][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[finger][j].ptr<float>(k+1);
@@ -1011,15 +1039,28 @@ float Hand::calFingerAngleWeight(const cv::Mat& img, Hand::FINGER finger)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[finger][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[finger][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[finger][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[finger][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 
 	for (int j=n/2+2; j<n; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[finger][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[finger][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[finger][j].ptr<float>(k+1);
@@ -1027,6 +1068,18 @@ float Hand::calFingerAngleWeight(const cv::Mat& img, Hand::FINGER finger)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[finger][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[finger][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[finger][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[finger][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 	return w;
@@ -1040,10 +1093,11 @@ float Hand::calFingerScaleWeight(const cv::Mat& img, Hand::FINGER finger)
 	int n = MeasureLinePoints[finger].size();
 	for (int j=n/2-2; j<n/2+2; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[finger][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[finger][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[finger][j].ptr<float>(k+1);
@@ -1051,6 +1105,18 @@ float Hand::calFingerScaleWeight(const cv::Mat& img, Hand::FINGER finger)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[finger][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[finger][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[finger][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[finger][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 	return w;
@@ -1064,10 +1130,11 @@ float Hand::calThumb1Weight(const cv::Mat& img)
 	int n = MeasureLinePoints[6].size();
 	for (int j=0; j<n; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[6][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[6][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[6][j].ptr<float>(k+1);
@@ -1075,16 +1142,29 @@ float Hand::calThumb1Weight(const cv::Mat& img)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[6][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[6][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[6][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[6][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 
 	n = MeasureLinePoints[7].size();
 	for (int j=0; j<n; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[7][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[7][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[7][j].ptr<float>(k+1);
@@ -1092,16 +1172,29 @@ float Hand::calThumb1Weight(const cv::Mat& img)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[7][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[7][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[7][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[7][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 
 	n = MeasureLinePoints[8].size();
 	for (int j=0; j<n; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[8][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[8][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[8][j].ptr<float>(k+1);
@@ -1109,6 +1202,18 @@ float Hand::calThumb1Weight(const cv::Mat& img)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[8][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[8][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[8][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[8][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 	return w;
@@ -1122,10 +1227,11 @@ float Hand::calThumb2Weight(const cv::Mat& img)
 	int n = MeasureLinePoints[7].size();
 	for (int j=0; j<n; j++)
 	{
+		int x0, y0, x1, y1;
+#ifdef FIND_SKIN
 		int k = 0;
 		for ( ; k<21; k++)
 		{
-			int x0, y0, x1, y1;
 			x0 = *MeasureLinePoints[7][j].ptr<float>(k);
 			y0 = *(MeasureLinePoints[7][j].ptr<float>(k)+1);
 			x1 = *MeasureLinePoints[7][j].ptr<float>(k+1);
@@ -1133,6 +1239,18 @@ float Hand::calThumb2Weight(const cv::Mat& img)
 			if (img.at<uchar>(y0,x0)==255 && img.at<uchar>(y1,x1)==255)
 				break;
 		}
+#else
+		int k = 21;
+		for ( ; k>0; k--)
+		{
+			x0 = *MeasureLinePoints[7][j].ptr<float>(k);
+			y0 = *(MeasureLinePoints[7][j].ptr<float>(k)+1);
+			x1 = *MeasureLinePoints[7][j].ptr<float>(k-1);
+			y1 = *(MeasureLinePoints[7][j].ptr<float>(k-1)+1);
+			if (img.at<uchar>(y0,x0)==0 && img.at<uchar>(y1,x1)==0)
+				break;
+		}
+#endif
 		w *= score[k];
 	}
 	return w;
