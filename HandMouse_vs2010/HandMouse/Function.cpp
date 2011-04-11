@@ -39,7 +39,7 @@ void refineFinger(Hand &hand, Hand::FINGER finger, const cv::Mat& bw)
 
 		weight = hand.calFingerScaleWeight(bw, finger);
 
-		if (weight > scaleWeight.weight)
+		if (weight >= scaleWeight.weight)
 		{
 			scaleWeight.scale = i;
 			scaleWeight.weight = weight;
