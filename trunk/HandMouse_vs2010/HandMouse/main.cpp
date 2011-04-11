@@ -19,12 +19,14 @@ const int NUM_PARTICLES = 2000;
 int main()
 {
 	Hand originalHand(confile, cntpntfile, mlinefile);
+	//Hand originalHand("newhand.xml");
 
 	cv::Mat testImg = cv::imread("ii.jpg");
 	originalHand.showHand(testImg, cv::Scalar(23,21,222),2);
 	originalHand.showMeasureLinePoints(testImg, cv::Scalar(211,2,2),2);
 
 	originalHand.affineHand(0, -50, 0.6, 0);
+	//originalHand.saveXML("newhand.xml");
 
 	cv::VideoCapture capture(0);
 
@@ -46,7 +48,7 @@ int main()
 	setMask(originalHand, mask);
 	cv::flip(mask, mask, 1);
 
-	imshow("mask", mask);
+	//imshow("mask", mask);
 
 	particle preParticles;
 	particle *particles, *newParticles;
@@ -102,6 +104,9 @@ int main()
 		if(countFit == 2) break;
 	}
 
+	cv::Mat element = cv::Mat::ones(3,3,CV_8UC1);
+	vector< vector<cv::Point> > contours;
+	vector< Vec4i> hierarchy;
 
 	while(1)
 	{
@@ -109,7 +114,14 @@ int main()
 		t = (double)getTickCount();
 		//TSLskinSegment(img, imgBw);
 		skinDetector.skinDetectForUser(img, imgBw);
-		medianBlur(imgBw, imgBw, 5);
+
+		
+		cv::imshow("bw1", imgBw);
+		//medianBlur(imgBw, imgBw, 5);
+		cv::morphologyEx(imgBw, imgBw, MORPH_OPEN, element,cv::Point(-1,-1), 1);
+		cv::morphologyEx(imgBw, imgBw, MORPH_CLOSE, element,cv::Point(-1,-1), 1);
+		cv::findContours(imgBw, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+		cv::drawContours(imgBw,contours,-1,255,CV_FILLED,8,hierarchy,2);
 		imshow("bw", imgBw);
 
 		if (!keep)
@@ -177,16 +189,16 @@ int main()
 		Hand showHand(originalHand);
 		showHand.affineHand(x, y, s, a);
 
-		sweepFinger(showHand, Hand::INDEX, -30, imgBw);
+		sweepFinger(showHand, Hand::INDEX, -20, imgBw);
 		refineFinger(showHand, Hand::INDEX, imgBw);
 
-		sweepFinger(showHand, Hand::MIDDLE, -20, imgBw);
+		sweepFinger(showHand, Hand::MIDDLE, -15, imgBw);
 		refineFinger(showHand, Hand::MIDDLE, imgBw);
 
-		sweepFinger(showHand, Hand::RING, -20, imgBw);
+		sweepFinger(showHand, Hand::RING, -15, imgBw);
 		refineFinger(showHand, Hand::RING, imgBw);
 
-		sweepFinger(showHand, Hand::LITTLE, -20, imgBw);
+		sweepFinger(showHand, Hand::LITTLE, -15, imgBw);
 		refineFinger(showHand, Hand::LITTLE, imgBw);
 
 		sweepThumb1(showHand, imgBw);
