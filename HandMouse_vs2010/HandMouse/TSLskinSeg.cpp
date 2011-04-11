@@ -24,7 +24,7 @@ void TSLskinSegment(const cv::Mat &src, cv::Mat& dst)
 		r = r/rgbSum -0.33;
 		g = g/rgbSum-0.33;
 
-		if (abs(g)<EPSILON)
+		if (fabs(g)<EPSILON)
 		{
 			T = 0;
 		}

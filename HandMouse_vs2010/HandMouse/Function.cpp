@@ -23,7 +23,7 @@ void sweepFinger(Hand &hand, Hand::FINGER finger,float initialAngle, const cv::M
 	hand.affineFinger(finger, 1, angleWeight.angle+initialAngle);
 }
 
-void refineFinger(Hand &hand, Hand::FINGER finger, const cv::Mat& bw)
+float refineFinger(Hand &hand, Hand::FINGER finger, const cv::Mat& bw)
 {
 	ScaleWeight scaleWeight;
 	scaleWeight.scale = 1;
@@ -47,6 +47,8 @@ void refineFinger(Hand &hand, Hand::FINGER finger, const cv::Mat& bw)
 	}
 	//std::cout<<"ok~!!!!"<<std::endl;
 	hand.affineFinger(finger, scaleWeight.scale/preScale, 0);
+
+	return scaleWeight.scale;
 	
 }
 
