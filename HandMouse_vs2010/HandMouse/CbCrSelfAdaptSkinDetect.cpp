@@ -128,8 +128,9 @@ void CbCrSelfAdaptSkinDetect::getBestParamentMask(const Mat& _img, const Mat& _m
 {
 	int i, j;
 	float bestPara;
-	int bestIdx = -1000;
+	int bestIdx;
 
+	bestPara = -1000;
 	float tmpPara;
 
 	for (i = 0; i < 21; i++)

@@ -1,5 +1,5 @@
 #include "Hand.h"
-//#define FIND_SKIN 1
+#define FIND_SKIN 1
 
 const float Hand::interval = 0.04;
 //const int Hand::nknots[nbsplines] = {7,16,16,16,16,7,7,10,7,7};
@@ -114,7 +114,7 @@ bool Hand::loadTXT(const string confile, const string ctrpntfile, const string m
 	}
 
 	string s;
-
+	 
 	config>>s;
 	if (s != "-gravity")
 	{
@@ -434,7 +434,7 @@ void Hand::readHandParam(FileStorage& fs, FileNode& root)
 	it0++;
 	Gravity.y = (float)*it0;
 
-	PivotPoints = Mat::zeros(3, 1, CV_32FC2);
+	PivotPoints = Mat::zeros(6, 1, CV_32FC2);
 	fn1 = fn0["PivotPoints"];
 	it0 = fn1.begin();
 	float* tmpptr;
@@ -448,7 +448,7 @@ void Hand::readHandParam(FileStorage& fs, FileNode& root)
 		++it0;
 	}
 
-	TipPoints = Mat::zeros(3, 1, CV_32FC2);
+	TipPoints = Mat::zeros(6, 1, CV_32FC2);
 	fn1 = fn0["TipPoints"];
 	it0 = fn1.begin();
 	//float* tmpptr;
@@ -1091,7 +1091,7 @@ float Hand::calFingerScaleWeight(const cv::Mat& img, Hand::FINGER finger)
 	float w = 1;
 
 	int n = MeasureLinePoints[finger].size();
-	for (int j=n/2-2; j<n/2+2; j++)
+	for (int j=n/2-1; j<n/2+1; j++)
 	{
 		int x0, y0, x1, y1;
 #ifdef FIND_SKIN
