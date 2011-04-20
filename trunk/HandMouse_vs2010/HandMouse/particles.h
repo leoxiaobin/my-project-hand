@@ -18,7 +18,7 @@ const float Ba=0.0555;
 /* standard deviations for gaussian sampling in transition model */
 #define TRANS_X_STD 15.0
 #define TRANS_Y_STD 15.0
-#define TRANS_S_STD 0.02
+#define TRANS_S_STD 0.06
 
 /* autoregressive dynamics parameters for transition model */
 #define A1  1.2
