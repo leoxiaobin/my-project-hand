@@ -27,30 +27,33 @@ int main()
 		return -1;
 	}
 
-	cv::Rect handLocation;
-	handLocation.x = 0;
-	handLocation.y = 0;
-	handLocation.width = img.cols;
-	handLocation.height = img.rows;
-	int hand = 0;
+	//cv::Rect handLocation;
+	//handLocation.x = 0;
+	//handLocation.y = 0;
+	//handLocation.width = img.cols;
+	//handLocation.height = img.rows;
+	//int hand = 0;
 
 	while(1)
 	{
 		cap>>img;
-		control.process(img, hand, handLocation);
-		if (hand == 1)
+		//control.process(img, hand, handLocation);
+		control.process(img);
+		if (control.hand == 1)
 		{
-			cout<<"Find five in the image!"<<endl;
-			cv::rectangle(img, handLocation, cv::Scalar(0,0,255), 3);
+			//cout<<"**************************************"<<endl;
+			//cout<<"Find five in the image!"<<endl;
+			cv::rectangle(img, control.handLocation, cv::Scalar(0,0,255), 3);
 		}
-		else if (hand == 2)
+		else if (control.hand == 2)
 		{
-			cout<<"Find fist in the image!"<<endl;
-			cv::rectangle(img, handLocation, cv::Scalar(0,255,0),3);
+			//cout<<"==============="<<endl;
+			//cout<<"Find fist in the image!"<<endl;
+			cv::rectangle(img, control.handLocation, cv::Scalar(0,255,0),3);
 		}
 		else
 		{
-			cout<<"Find nothing in the image!"<<endl;
+			//cout<<"Find nothing in the image!"<<endl;
 		}
 		cv::imshow("result", img);
 		cv::waitKey(20);

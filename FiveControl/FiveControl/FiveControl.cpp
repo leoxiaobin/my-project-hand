@@ -1,12 +1,12 @@
 #include "FiveControl.h"
 const int FiveControl::angle[rotateNum] = {0, -15, 15};
 
-FiveControl::FiveControl(const string five, const string fist)
+FiveControl::FiveControl(const string five, const string fist):hand(0)
 {
 	load(five, fist);
 }
 
-FiveControl::FiveControl()
+FiveControl::FiveControl():hand(0)
 {
 
 }
@@ -127,7 +127,8 @@ void FiveControl::detectFist(const cv::Mat& _img, cv::Rect& ROIRect, vector<cv::
 	}
 }
 
-void FiveControl::process(cv::Mat& img, int& hand, cv::Rect& handLocation)
+//void FiveControl::process(cv::Mat& img, int& hand, cv::Rect& handLocation)
+void FiveControl::process(cv::Mat& img)
 {
 	int imgHeight, imgWidth;
 	imgHeight = img.rows;
@@ -142,10 +143,21 @@ void FiveControl::process(cv::Mat& img, int& hand, cv::Rect& handLocation)
 	cv::medianBlur(imgBw, imgBw, 5);
 	img.copyTo(imgCopy, imgBw);
 
+	//if (hand == 0)
+	//{
+	//	handLocation.x = 0;
+	//	handLocation.y = 0;
+	//	handLocation.width = imgWidth;
+	//	handLocation.height = imgHeight;
+	//}
 	cv::Rect handROI;
-	if (handLocation.width == imgWidth)
+	if (hand == 0)
 	{
-		handROI = handLocation;
+		//handROI = handLocation;
+		handROI.x = 0;
+		handROI.y = 0;
+		handROI.width = imgWidth;
+		handROI.height = imgHeight;
 	} 
 	else
 	{
