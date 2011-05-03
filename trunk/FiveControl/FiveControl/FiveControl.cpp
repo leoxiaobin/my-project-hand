@@ -50,7 +50,7 @@ void FiveControl::TSLskinSegment(const cv::Mat& src, cv::Mat& dst)
 		r = r/rgbSum -0.33;
 		g = g/rgbSum-0.33;
 
-		if (abs(g)<EPSILON)
+		if (fabs(g)<EPSILON)
 		{
 			T = 0;
 		}
@@ -127,7 +127,6 @@ void FiveControl::detectFist(const cv::Mat& _img, cv::Rect& ROIRect, vector<cv::
 	}
 }
 
-//void FiveControl::process(cv::Mat& img, int& hand, cv::Rect& handLocation)
 void FiveControl::process(cv::Mat& img)
 {
 	int imgHeight, imgWidth;
@@ -140,20 +139,14 @@ void FiveControl::process(cv::Mat& img)
 	vector<cv::Rect> hands;
 
 	TSLskinSegment(img, imgBw);
-	cv::medianBlur(imgBw, imgBw, 5);
+	//cv::medianBlur(imgBw, imgBw, 3);
 	img.copyTo(imgCopy, imgBw);
 
-	//if (hand == 0)
-	//{
-	//	handLocation.x = 0;
-	//	handLocation.y = 0;
-	//	handLocation.width = imgWidth;
-	//	handLocation.height = imgHeight;
-	//}
+	cv::imshow("bw", imgBw);
+
 	cv::Rect handROI;
 	if (hand == 0)
 	{
-		//handROI = handLocation;
 		handROI.x = 0;
 		handROI.y = 0;
 		handROI.width = imgWidth;
