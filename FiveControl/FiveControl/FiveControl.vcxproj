@@ -141,10 +141,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="drawCircle.h" />
     <ClInclude Include="FiveControl.h" />
     <ClInclude Include="opencv.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="drawCircle.cpp" />
     <ClCompile Include="FiveControl.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

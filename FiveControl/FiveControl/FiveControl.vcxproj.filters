@@ -21,12 +21,18 @@
     <ClInclude Include="opencv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="drawCircle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FiveControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="drawCircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

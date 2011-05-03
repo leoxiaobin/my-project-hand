@@ -16,9 +16,7 @@ public:
 	cv::Rect handLocation;
 
 	bool load(const string five, const string fist);
-	//void process(cv::Mat& img, int& hand, cv::Rect& handLocation);
 	void process(cv::Mat& img);
-	//bool ifLoaded;
 
 private:
 
