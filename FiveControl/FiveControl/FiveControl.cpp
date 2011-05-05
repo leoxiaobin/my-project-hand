@@ -142,7 +142,7 @@ void FiveControl::process(cv::Mat& img)
 	//cv::medianBlur(imgBw, imgBw, 3);
 	img.copyTo(imgCopy, imgBw);
 
-	cv::imshow("bw", imgBw);
+	//cv::imshow("bw", imgBw);
 
 	cv::Rect handROI;
 	if (hand == 0)
