@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CvCascadeBoostTree" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAQAgQAACAAAAAA=</HashCode>
+      <FileName>boost.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvCascadeBoost" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAIAAAAAAACCAAAAAAAAAAACAAAQAgKAJAAgA=</HashCode>
+      <FileName>boost.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvCascadeParams">
+    <Position X="8" Y="20" Width="3.75" />
+    <NestedTypes>
+      <Enum Name="CvCascadeParams::__unnamed_enum_0003_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>cascadeclassifier.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAACAAACAAICAAAEAAAQAAEAKAABA=</HashCode>
+      <FileName>cascadeclassifier.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvCascadeClassifier" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAJIiggAgFAAQAQAEAAAAAAgAAEAZACoAAAAA=</HashCode>
+      <FileName>cascadeclassifier.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvHaarFeatureParams">
+    <Position X="3.75" Y="24.75" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="CvHaarFeatureParams::__unnamed_enum_0008_1">
+        <TypeIdentifier>
+          <NewMemberFileName>haarfeatures.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAACAAAAAACAAIAAAAAIAAQAAAACAAAA=</HashCode>
+      <FileName>haarfeatures.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvHaarEvaluator">
+    <Position X="0.5" Y="9.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="CvHaarEvaluator::Feature">
+        <Compartments>
+          <Compartment Name="Nested Types" Collapsed="false" />
+        </Compartments>
+        <NestedTypes>
+          <Struct Name="CvHaarEvaluator::Feature::__unnamed_struct_0008_2">
+            <TypeIdentifier>
+              <NewMemberFileName>haarfeatures.h</NewMemberFileName>
+            </TypeIdentifier>
+          </Struct>
+          <Struct Name="CvHaarEvaluator::Feature::__unnamed_struct_0008_3">
+            <TypeIdentifier>
+              <NewMemberFileName>haarfeatures.h</NewMemberFileName>
+            </TypeIdentifier>
+          </Struct>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>haarfeatures.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAQAEAEQQAAAAAAgAgAAIAAAAAAAAAABA=</HashCode>
+      <FileName>haarfeatures.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvCascadeImageReader" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAIAAAAAAAACAIAAAAAABAAAAAIAA=</HashCode>
+      <FileName>imagestorage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvLBPEvaluator">
+    <Position X="5" Y="9.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="CvLBPEvaluator::Feature">
+        <TypeIdentifier>
+          <NewMemberFileName>lbpfeatures.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAEAEQQAAAAABAAAAAIAAAAAAAAAABA=</HashCode>
+      <FileName>lbpfeatures.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvParams">
+    <Position X="4.5" Y="16.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAACAAACAAIAAUAAAAAQAAAACAAAA=</HashCode>
+      <FileName>traincascade_features.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvFeatureParams">
+    <Position X="2.5" Y="20" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="CvFeatureParams::__unnamed_enum_000e_1">
+        <TypeIdentifier>
+          <NewMemberFileName>traincascade_features.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAACAAAAAAAAAAAAIAAQBAAAgAAAA=</HashCode>
+      <FileName>traincascade_features.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CvFeatureEvaluator">
+    <Position X="2.75" Y="4.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAEwQAAAAAACAACIIIAABAAIggABA=</HashCode>
+      <FileName>traincascade_features.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="FeatureIdxOnlyPrecalc" Collapsed="true">
+    <Position X="11.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAgFAAAAAAAAAAAAAAAAAIACAQAAAA=</HashCode>
+      <FileName>boost.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FeatureValAndIdxPrecalc" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgFAAAAAAAAAAAAAAAAAMACAQABAA=</HashCode>
+      <FileName>boost.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FeatureValOnlyPrecalc" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEACAQAAAA=</HashCode>
+      <FileName>boost.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CvCascadeBoostParams" Collapsed="true">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACACAAACAAIAAAAAIAAQAgAAKAAAA=</HashCode>
+      <FileName>boost.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CvCascadeBoostTrainData" Collapsed="true">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAAAAAEgQBAAABAAAAACAAAQAACgAIAAEAAIAAAAA=</HashCode>
+      <FileName>boost.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CvLBPFeatureParams">
+    <Position X="1" Y="24.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lbpfeatures.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
