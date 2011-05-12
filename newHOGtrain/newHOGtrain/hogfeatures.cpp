@@ -3,14 +3,14 @@
 
 CvHOGFeatureParams::CvHOGFeatureParams()
 {
-	maxCatCount = 256;
+	maxCatCount = 16;
 	name = HOGF_NAME;
 }
 
 void CvHOGEvaluator::init(const CvFeatureParams *_featureParams, int _maxSampleCount, Size _winSize)
 {
 	CV_Assert( _maxSampleCount > 0);
-	for (int i = 0; i<9; i++)
+	for (int i = 0; i<5; i++)
 	{
 		Mat tmp = Mat::zeros((int)_maxSampleCount, (_winSize.width + 1) * (_winSize.height + 1), CV_64FC1);
 		sum.push_back(tmp);
@@ -35,7 +35,7 @@ void CvHOGEvaluator::setImage(const Mat &img, uchar clsLabel, int idx)
 	Point roiofs;
 	img.locateROI(wholeSize, roiofs);
 
-	Mat bins = Mat::zeros(9,imgWidth*imgHeight,CV_32FC1);
+	Mat bins = Mat::zeros(5,imgWidth*imgHeight,CV_32FC1);
 
 	int i, x, y;
 	int cn = img.channels();
@@ -68,7 +68,7 @@ void CvHOGEvaluator::setImage(const Mat &img, uchar clsLabel, int idx)
 	Mat Mag(1, imgWidth, CV_32F, dbuf + imgWidth*2);
 	Mat Angle(1, imgWidth, CV_32F, dbuf + imgWidth*3);
 
-	int _nbins = 9;
+	int _nbins = 5;
 	float angleScale = (float)(_nbins/CV_PI);
 
 	for( y = 0; y < imgHeight; y++ )
@@ -157,10 +157,10 @@ void CvHOGEvaluator::setImage(const Mat &img, uchar clsLabel, int idx)
 	Mat innSum2((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[2].ptr((int)idx));
 	Mat innSum3((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[3].ptr((int)idx));
 	Mat innSum4((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[4].ptr((int)idx));
-	Mat innSum5((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[5].ptr((int)idx));
-	Mat innSum6((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[6].ptr((int)idx));
-	Mat innSum7((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[7].ptr((int)idx));
-	Mat innSum8((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[8].ptr((int)idx));
+	//Mat innSum5((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[5].ptr((int)idx));
+	//Mat innSum6((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[6].ptr((int)idx));
+	//Mat innSum7((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[7].ptr((int)idx));
+	//Mat innSum8((imgHeight+1),(imgWidth+1),CV_64FC1,(double*)sum[8].ptr((int)idx));
 
 	//integralBins.create(9,(imgWidth+1)*(imgHeight+1), CV_64FC1);
 
@@ -169,20 +169,20 @@ void CvHOGEvaluator::setImage(const Mat &img, uchar clsLabel, int idx)
 	Mat tmpBins2(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(2));
 	Mat tmpBins3(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(3));
 	Mat tmpBins4(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(4));
-	Mat tmpBins5(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(5));
-	Mat tmpBins6(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(6));
-	Mat tmpBins7(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(7));
-	Mat tmpBins8(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(8));
+	//Mat tmpBins5(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(5));
+	//Mat tmpBins6(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(6));
+	//Mat tmpBins7(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(7));
+	//Mat tmpBins8(imgHeight,imgWidth,CV_32FC1,(float*)bins.ptr(8));
 
 	integral(tmpBins0,innSum0);
 	integral(tmpBins1,innSum1);
 	integral(tmpBins2,innSum2);
 	integral(tmpBins3,innSum3);
 	integral(tmpBins4,innSum4);
-	integral(tmpBins5,innSum5);
-	integral(tmpBins6,innSum6);
-	integral(tmpBins7,innSum7);
-	integral(tmpBins8,innSum8);
+	//integral(tmpBins5,innSum5);
+	//integral(tmpBins6,innSum6);
+	//integral(tmpBins7,innSum7);
+	//integral(tmpBins8,innSum8);
 
 }
 
@@ -196,8 +196,8 @@ void CvHOGEvaluator::generateFeatures()
 	int offset = winSize.width + 1;
 	for( int x = 0; x < winSize.width; x++ )
 		for( int y = 0; y < winSize.height; y++ )
-			for( int w = 1; w <= winSize.width; w=w+4 )
-				for( int h = 1; h <= winSize.height; h=h+4 )
+			for( int w = 1; w <= winSize.width; w++ )
+				for( int h = 1; h <= winSize.height; h++ )
 					if ( (x+w <= winSize.width) && (y+h <= winSize.height) )
 						features.push_back( Feature(offset, x, y, w, h ) );
 	numFeatures = (int)features.size();
