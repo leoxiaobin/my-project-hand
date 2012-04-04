@@ -6,7 +6,7 @@ int main()
 {
 	string hog_xml = "hog_64x64_16x32_8x16_8x16_1.xml";
 	string hog_like_xml = "4bit_40_18.xml";
-	string lbp_xml = "haarcascade_frontalface_alt.xml";
+	string lbp_xml = "c1_lbp_958_18.xml";
 
 	Tracking hog_tracking;
 	Tracking hog_like_tracking;
